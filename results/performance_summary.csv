@@ -1,0 +1,4 @@
+Strategy,Cumulative Return,Annual Return,Annual Volatility,Sharpe Ratio,Calmar Ratio,Stability,Max Drawdown,Omega Ratio,Sortino Ratio,Skew,Kurtosis,Tail Ratio,Daily VaR (5%)
+PPO (DRL),0.8679,0.0624,0.0651,0.9636,0.6342,0.9092,-0.0984,1.165,1.5911,-0.0271,0.0629,1.051,-0.00658
+Max Sharpe (MVO),0.5795,0.0451,0.1089,0.4598,0.1952,0.6008,-0.2313,1.0772,0.6553,-0.0491,0.639,1.0328,-0.010892
+Equal Weight,0.8698,0.0623,0.0647,0.9663,0.6683,0.922,-0.0932,1.1662,1.5947,-0.0144,0.0879,1.0818,-0.00646
