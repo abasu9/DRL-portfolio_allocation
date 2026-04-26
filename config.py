@@ -1,5 +1,14 @@
 """Configuration for DRL Portfolio Allocation (Sood et al., 2023)."""
 
+# ---------------------------------------------------------------------------
+# Training budget toggle
+# ---------------------------------------------------------------------------
+# QUICK_MODE = True  -> 50K timesteps, 1 seed  (fast, ~3 min)
+# QUICK_MODE = False -> 500K timesteps, 1 seed  (fuller training, ~30 min)
+# For full paper replication set QUICK_MODE = False and override
+# TOTAL_TIMESTEPS = 7_500_000, N_SEEDS = 5, N_ENVS = 10
+QUICK_MODE = True
+
 # 9 S&P 500 Sector ETFs (XLC and XLRE excluded - launched after 2006)
 SECTOR_ETFS = ["XLB", "XLI", "XLY", "XLP", "XLV", "XLF", "XLK", "XLU", "XLE"]
 
@@ -52,9 +61,15 @@ PPO_PARAMS = {
     },
 }
 
-TOTAL_TIMESTEPS = 7_500_000
-N_ENVS = 10                   # parallel environments
-N_SEEDS = 5                   # random seeds per window
+# Training budget (paper: 7.5M timesteps, 5 seeds, 10 parallel envs)
+if QUICK_MODE:
+    TOTAL_TIMESTEPS = 50_000
+    N_SEEDS = 1
+else:
+    TOTAL_TIMESTEPS = 500_000
+    N_SEEDS = 1
+
+N_ENVS = 10                   # parallel environments (unused in lightweight mode)
 
 # Differential Sharpe Ratio parameters
 DSR_ETA = 1.0 / 252
